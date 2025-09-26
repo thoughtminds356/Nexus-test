@@ -1,0 +1,29 @@
+# Nexus Test Project
+
+Django application with Azure Blob Storage integration for video file uploads.
+
+## Features
+- Agent management system
+- Video file upload to Azure Blob Storage
+- PostgreSQL database integration
+- Department and Agent relationship management
+
+## Postgres database connection
+
+- `psql -U <username> -h localhost`
+- `CREATE DATABASE <dbname>;`
+
+## Setup
+
+1. Clone the repository
+2. Create virtual environment: `python -m venv venv`
+3. Activate virtual environment: `venv\Scripts\activate`
+4. Install dependencies: `pip install -r requirements.txt`
+5. Configure environment variables in `.env` file
+6. Run migrations: `python manage.py migrate`
+7. Create superuser: `python manage.py createsuperuser`
+8. Run server: `python manage.py runserver`
+
+## Environment Variables
+
+Create a `.env` file with:
