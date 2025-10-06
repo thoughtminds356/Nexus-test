@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'myapp',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,7 +133,56 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# # Azure Storage Configuration for Media Files
+# AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
+# AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
+# AZURE_CONTAINER = os.getenv('AZURE_CONTAINER', 'videos')
+# AZURE_STATIC_CONTAINER = os.getenv('AZURE_STATIC_CONTAINER', 'static')
+
+# if AZURE_ACCOUNT_NAME and AZURE_ACCOUNT_KEY:
+#     # Use custom Azure storage classes
+#     DEFAULT_FILE_STORAGE = 'myproject.storage.AzureMediaStorage'
+#     STATICFILES_STORAGE = 'myproject.storage.AzureStaticStorage'
+    
+#     # Azure settings
+#     AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+#     MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'
+#     STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_STATIC_CONTAINER}/'
+# else:
+#     # Fallback to local storage for development
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = BASE_DIR / 'media'
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS Configuration for React Frontend
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite development server
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",  # Fallback for other setups
+    "http://127.0.0.1:3000",
+]
+
+# For development only - allows all origins (remove in production)
+CORS_ALLOW_ALL_ORIGINS = DEBUG
+
+# Allow credentials (cookies, authorization headers) in CORS requests
+CORS_ALLOW_CREDENTIALS = True
+
+# Headers that can be used in requests
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]

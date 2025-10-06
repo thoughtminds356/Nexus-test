@@ -13,16 +13,32 @@ Django application with Azure Blob Storage integration for video file uploads.
 - `psql -U <username> -h localhost`
 - `CREATE DATABASE <dbname>;`
 
-## Setup
+## Backend Setup
 
 1. Clone the repository
-2. Create virtual environment: `python -m venv venv`
-3. Activate virtual environment: `venv\Scripts\activate`
-4. Install dependencies: `pip install -r requirements.txt`
-5. Configure environment variables in `.env` file
-6. Run migrations: `python manage.py migrate`
-7. Create superuser: `python manage.py createsuperuser`
-8. Run server: `python manage.py runserver`
+2. Navigate to backend: `cd backend`
+3. Create virtual environment: `python -m venv venv`
+4. Activate virtual environment: `venv\Scripts\activate`
+5. Install dependencies: `pip install -r requirements.txt`
+6. Configure environment variables in `.env` file
+7. Run migrations: `python manage.py migrate`
+8. Create superuser: `python manage.py createsuperuser`
+9. Run server: `python manage.py runserver`
+
+## Frontend Setup
+
+1. Navigate to project root
+2. Create React app with Vite: `npm create vite@latest frontend -- --template react`
+3. Navigate to frontend: `cd frontend`
+4. Install dependencies: `npm install`
+5. Install axios: `npm install axios`
+6. Start development server: `npm run dev`
+
+## Development
+
+- Backend runs on: `http://localhost:8000`
+- Frontend runs on: `http://localhost:5173` (Vite default port)
+- API endpoints available at: `http://localhost:8000/api/`
 
 ## Environment Variables
 
