@@ -1,6 +1,7 @@
 
 .env
 venv/
+*.pyc
 # Root level gitignore for Nexus-test project
 
 # Environment variables
