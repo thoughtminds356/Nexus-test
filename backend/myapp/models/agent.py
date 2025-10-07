@@ -16,6 +16,7 @@ class Agent(models.Model):
     problem = models.TextField(blank=True)
     solution = models.TextField(blank=True)
     video_file = models.FileField(upload_to='videos/', blank=True, null=True)
+    logo = models.ImageField(upload_to='agent_logos/', blank=True, null=True)
     agent_configuration = models.JSONField(blank=True, null=True)
     agent_type = models.CharField(max_length=4, choices=AGENT_TYPE_CHOICES)
 
